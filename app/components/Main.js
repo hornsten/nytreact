@@ -2,8 +2,6 @@
 var React = require("react");
 
 // Here we include all of the sub-components
-var Adder = require("./panels/Adder");
-var Multiplier = require("./panels/Multiplier");
 var Saved = require("./panels/Saved");
 var Search = require("./panels/Search");
 
@@ -29,7 +27,7 @@ var Main = React.createClass({
     return (
       <div className="wrapper">
           <nav className="navbar navbar-default">
-  <div className="container-fluid">
+  <div className="container">
     <div className="navbar-header text-center">
       I Am A Navbar!
     </div>
@@ -56,35 +54,23 @@ var Main = React.createClass({
           </div>
           <div className="container">
                <div className="row">
-          <div className="col-md-3">
-
-            <Adder clicks={this.state.clicks} />
-
-          </div>
-
-          <div className="col-md-3">
-
-            <Multiplier clicks={this.state.clicks} />
-
-          </div>
-
-
-          <div className="col-md-3">
-
-            <Saved clicks={this.state.clicks} />
-
-          </div>
-
-          <div className="col-md-3">
+          <div className="col-md-12">
 
             <Search clicks={this.state.clicks} />
+
+          </div>
+</div>
+ <div className="row">
+          <div className="col-md-12">
+
+            <Saved clicks={this.state.clicks} />
 
           </div>
 
         </div>
 
       </div>
-      </div>
+  </div>
     );
   }
 });
