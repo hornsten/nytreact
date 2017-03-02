@@ -26,13 +26,7 @@ var Main = React.createClass({
   render: function() {
     return (
       <div className="wrapper">
-          <nav className="navbar navbar-default">
-  <div className="container">
-    <div className="navbar-header text-center">
-      I Am A Navbar!
-    </div>
-  </div>
-</nav>       
+             
           <div className="jumbotron text-center">
               <div className="container">
             <h1>New York Times Article Scrubber</h1>
@@ -43,7 +37,7 @@ var Main = React.createClass({
                 Note how we have an onClick event associated with our handleClick function.
                 this.handleClick references the handleClick function defined above our render function
               */}
-              <button className="btn btn-primary btn-lg" onClick={this.handleClick}>CLICK ME!!!!</button>
+             
             </p>
           </div>
 

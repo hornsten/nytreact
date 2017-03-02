@@ -18,7 +18,11 @@ var Search = React.createClass({
     newState[event.target.id] = event.target.value;
     this.setState(newState);
   },
-
+  handleClick: function(event) {
+    var newState = {};
+    newState[event.target.topic] = event.target.value;
+    this.setState(newState);
+  },
   // Here we descibe this component's render method
   render: function() {
     return (
@@ -26,7 +30,7 @@ var Search = React.createClass({
         <div className="row">
           
           <div className="col-md-12">
-            <div className="panel panel-default">
+            <div className="panel panel-info">
               <div className="panel-heading">
                 <h3 className="panel-title text-center">Search</h3>
               </div>
@@ -73,6 +77,7 @@ var Search = React.createClass({
                       onChange={this.handleChange}
                       required
                     />
+                     <button className="btn btn-primary btn-lg" onClick={this.handleClick}>CLICK ME!!!!</button>
                   </div>
                 </form>
               </div>
@@ -81,7 +86,7 @@ var Search = React.createClass({
           </div>
           <div className="row">
           <div className="col-md-12">
-            <div className="panel panel-default">
+            <div className="panel panel-info">
               <div className="panel-heading">
                 <h3 className="panel-title text-center">Results</h3>
               </div>
