@@ -29,7 +29,7 @@ app.use(express.static("./public"));
 
 //Main '/' Route. This will redirect to our rendered React applicaiton
 app.get("*", function(req, res) {
-    res.sendFile(__dirname + "/public.index.html");
+    res.sendFile(__dirname + "/public/index.html");
 });
 
 app.listen(PORT, function() {

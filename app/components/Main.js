@@ -40,7 +40,7 @@ var Main = React.createClass({
              
             </p>
           </div>
-
+{this.props.children}
           {/*
             Below we add each of the sub components.
             Note how we "pass" in the click count as a prop called "clicks"
@@ -50,14 +50,14 @@ var Main = React.createClass({
                <div className="row">
           <div className="col-md-12">
 
-            <Search clicks={this.state.clicks} />
+            {/*<Search clicks={this.state.clicks} />*/}
 
           </div>
 </div>
  <div className="row">
           <div className="col-md-12">
 
-            <Saved clicks={this.state.clicks} />
+            {/*<Saved clicks={this.state.clicks} />*/}
 
           </div>
 
