@@ -54,7 +54,7 @@ componentDidUpdate: function() {
                <div className="row">
           <div className="col-md-12">
 
-    <Search setTerm={this.setTerm} setStartYear={this.startYear} setEndYear={this.endYear} />
+    <Search setTerm={this.setTerm} setStartYear={this.startYear} setEndYear={this.endYear} results={this.state.results} />
 
           </div>
 </div>
