@@ -27,7 +27,11 @@ var queryURL = queryURLBase + "&q=" + queryTerm;
 
   // This function hits our own server to retrieve the record of query results
   getArticles: function() {
-    return axios.get("/api");
+    return axios.get("/api/saved").then(function(response) {
+
+            return response.data;
+        })
+    
   },
 
   // This function posts new searches to our database.

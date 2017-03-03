@@ -1,25 +1,10 @@
 // Include React
 var React = require("react");
+var helpers = require("../../utils/nytHelpers");
 
 // Create the Saved Component
 var Saved = React.createClass({
-
-  getInitialState: function() {
-    return {term: ""};
-  },
-
-  handleChange: function(event) {
-
-    this.setState({term: event.target.value});
-  },
-
-  handleSubmit: function(event) {
-
-    event.preventDefault();
-
-    this.props.setTerm(this.state.term);
-    this.setState({term: ""});
-  },
+ 
   render: function() {
     return (
       <div className="panel panel-primary">
@@ -28,8 +13,8 @@ var Saved = React.createClass({
         </div>
         <div className="panel-body text-center">
 
-          {/* Saved multiplies the number of clicks by a random number between 1 and 10 */}
-          <h1>No Saved Articles Yet</h1>
+          <div>{this.props.articles}</div>
+          <div>No articles yet</div>
 
         </div>
       </div>

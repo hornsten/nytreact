@@ -33,23 +33,22 @@ app.get("*", function(req, res) {
     res.sendFile(__dirname + "/public/index.html");
 });
 
-app.get("/api", function(req, res) {
-
+app.get("/api/saved", function(req, res) {
+console.log('hittin the get route!!');
   // We will find all the records, sort it in descending order, then limit the records to 5
- Article.find({}).sort([
-    ["date", "descending"]
-  ]).limit(5).exec(function(err, doc) {
+ var query = Article.find({});
+   query.exec(function(err, articles) {
     if (err) {
       console.log(err);
     }
     else {
-      res.send(doc);
+      res.json(articles);
     }
   });
 });
 
 app.post("/api", function(req, res) {
-  console.log("BODY: " + req.body.title);
+  
  var art = new Article({
         title: req.body.title,
         url: req.body.url      

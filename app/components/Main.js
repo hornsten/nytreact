@@ -13,13 +13,19 @@ var Main = React.createClass({
 
   // Here we set a generic state associated with the number of clicks
   getInitialState: function() {
+
     return {
      queryTerm: "",
      startYear: 0,
-     endYear: 0
+     endYear: 0,
+     articles: []
     };
   },
 componentDidUpdate: function() {
+
+ helpers.getArticles().then(function(data) {
+      console.log(data);
+   
 
   helpers.runQuery(this.state.queryTerm,this.state.startYear, this.state.endYear).then(function(data){
     var articulo = data.map(function(art,i) {
@@ -27,7 +33,7 @@ componentDidUpdate: function() {
 var artTitle = art.headline.main;
 var artUrl = art.web_url;
 
-      return <div className="well" key={i}>
+     return <div className="well" key={i}>
         <h4 className="articleHeadline"><span className="label label-primary">{i+1}</span> {art.headline.main}</h4>
         <h5>{art.pub_date}</h5>
          <h5>{art.section_name}</h5>
@@ -41,12 +47,12 @@ var artUrl = art.web_url;
           </form>
       </div>;
     })
-  
-  
 
     this.setState({results: articulo});
   console.log(articulo);
-  }.bind(this));
+
+   }.bind(this));
+    }.bind(this));
 },
   setTerm: function(term) {
     this.setState({queryTerm: term});
@@ -83,7 +89,7 @@ var artUrl = art.web_url;
  <div className="row">
           <div className="col-md-12">
 
-            <Saved />
+            <Saved articles={this.state.articles}/>
 
           </div>
 
