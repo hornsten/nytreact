@@ -3,6 +3,23 @@ var React = require("react");
 
 // Create the Saved Component
 var Saved = React.createClass({
+
+  getInitialState: function() {
+    return {term: ""};
+  },
+
+  handleChange: function(event) {
+
+    this.setState({term: event.target.value});
+  },
+
+  handleSubmit: function(event) {
+
+    event.preventDefault();
+
+    this.props.setTerm(this.state.term);
+    this.setState({term: ""});
+  },
   render: function() {
     return (
       <div className="panel panel-info">

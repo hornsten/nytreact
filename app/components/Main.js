@@ -5,6 +5,8 @@ var React = require("react");
 var Saved = require("./panels/Saved");
 var Search = require("./panels/Search");
 
+var helpers = require("../utils/nytHelpers");
+
 // This is the main component. It includes the banner and button.
 // Whenever you click the button it will communicate the click event to all other sub components.
 var Main = React.createClass({
@@ -12,16 +14,28 @@ var Main = React.createClass({
   // Here we set a generic state associated with the number of clicks
   getInitialState: function() {
     return {
-      clicks: 0
+     queryTerm: "",
+     startYear: 0,
+     endYear: 0
     };
   },
+componentDidUpdate: function() {
 
-  // Whenever the button is clicked we'll use setState to add to the clickCounter
-  // Note the syntax for setting the state
-  handleClick: function() {
-    this.setState({ clicks: 1 + this.state.clicks });
+  helpers.runQuery(this.state.queryTerm,this.state.startYear, this.state.endYear).then(function(data){
+    console.log(data);
+    this.setState({results: data});
+  }.bind(this));
+},
+  setTerm: function(term) {
+    this.setState({queryTerm: term});
   },
-
+  setStartYear: function(startYear) {
+    this.setState({startYear: startYear});
+  },
+  setEndYear: function(endYear) {
+    this.setState({endYear: endYear});
+  },
+  
   // Here we describe this component's render method
   render: function() {
     return (
@@ -32,25 +46,15 @@ var Main = React.createClass({
             <h1>New York Times Article Scrubber</h1>
             <p>Search for and annotate articles of interest</p>
             <p>
-       { /*
-                Here we create a button click.
-                Note how we have an onClick event associated with our handleClick function.
-                this.handleClick references the handleClick function defined above our render function
-              */}
-             
             </p>
           </div>
-{this.props.children}
-          {/*
-            Below we add each of the sub components.
-            Note how we "pass" in the click count as a prop called "clicks"
-          */}
+          
           </div>
           <div className="container">
                <div className="row">
           <div className="col-md-12">
 
-            {/*<Search clicks={this.state.clicks} />*/}
+    <Search setTerm={this.setTerm} setStartYear={this.startYear} setEndYear={this.endYear} />
 
           </div>
 </div>
