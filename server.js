@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var app = express();
 var PORT = process.env.PORT || 3000;
+var Article = require('./models/Article');
 
 // Use native promises
 mongoose.Promise = global.Promise;
@@ -30,6 +31,44 @@ app.use(express.static("./public"));
 //Main '/' Route. This will redirect to our rendered React applicaiton
 app.get("*", function(req, res) {
     res.sendFile(__dirname + "/public/index.html");
+});
+
+app.get("/api", function(req, res) {
+
+  // We will find all the records, sort it in descending order, then limit the records to 5
+ Article.find({}).sort([
+    ["date", "descending"]
+  ]).limit(5).exec(function(err, doc) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send(doc);
+    }
+  });
+});
+
+app.post("/api", function(req, res) {
+  console.log("BODY: " + req.body.title);
+ var art = new Article({
+        title: req.body.title,
+        url: req.body.url      
+    });
+
+    art.save(function(err, art) {
+        // If there's an error during this query
+        if (err) {
+            // Log the error
+            return console.log(err);
+        }
+        // Otherwise,
+        else {
+            //log results
+        
+            res.send(art);
+        }
+    });
+
 });
 
 app.listen(PORT, function() {

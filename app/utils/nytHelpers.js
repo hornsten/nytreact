@@ -23,17 +23,17 @@ var queryURL = queryURLBase + "&q=" + queryTerm;
      
       return response.data.response.docs;
     });
-  }
+  },
 
   // This function hits our own server to retrieve the record of query results
-//   getHistory: function() {
-//     return axios.get("/api");
-//   },
+  getArticles: function() {
+    return axios.get("/api");
+  },
 
   // This function posts new searches to our database.
-//   postHistory: function(location) {
-//     return axios.post("/api", { location: location });
-//   }
+  postArticle: function(artTitle,artUrl) {
+    return axios.post("/api", { title: artTitle, url: artUrl });
+  }
 };
 
 // We export the API helper

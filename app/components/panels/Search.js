@@ -16,12 +16,23 @@ var Search = React.createClass({
     this.setState(newState);
    
   },
+  setTerm: function(term) {
+    this.setState({queryTerm: term, 
+      startYear:startYear,
+      endYear:endYear});
+  },
+  setStartYear: function(e) {
+    this.setState({startYear: e.target.value})
+  },
+  setEndYear: function(e) {
+    this.setState({endYear: e.target.value})
+  },
 
   handleSubmit: function(event) {
 
     event.preventDefault();
 
-    this.props.setTerm(this.state.term);
+    this.props.setTerm(this.state.term,this.state.startYear,this.state.endYear);
     // this.props.setStartYear(this.state.startYear);
     // this.props.setEndYear(this.state.endYear);
     this.setState({term: "",startYear: 0, endYear: 0});
