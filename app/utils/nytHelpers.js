@@ -32,7 +32,7 @@ var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key
       // }
       // // If we don't get any results, return an empty string
       // return "";
-      return response.data.response.docs[0].headline.main;
+      return response.data.response.docs;
     });
   }
 

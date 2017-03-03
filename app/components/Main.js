@@ -22,8 +22,16 @@ var Main = React.createClass({
 componentDidUpdate: function() {
 
   helpers.runQuery(this.state.queryTerm,this.state.startYear, this.state.endYear).then(function(data){
-    console.log(data);
-    this.setState({results: data});
+    var articulo = data.map(function(art,i) {
+      return <div className="well" key={i}>
+        <h3>{art.headline.main}</h3>
+        <h5>{art.pub_date}</h5>
+         <h5>{art.section_name}</h5>
+        <h5>{art.web_url}</h5>  
+      </div>;
+    })
+    console.log(articulo);
+    this.setState({results: articulo});
   }.bind(this));
 },
   setTerm: function(term) {

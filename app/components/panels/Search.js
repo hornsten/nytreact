@@ -91,7 +91,7 @@ var Search = React.createClass({
                 <h3 className="panel-title text-center">Results</h3>
               </div>
               <div className="panel-body text-center">
-                <p>{this.props.results}</p>
+                <div>{this.props.results}</div>
               </div>
             </div>
           </div>
