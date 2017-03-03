@@ -24,10 +24,11 @@ componentDidUpdate: function() {
   helpers.runQuery(this.state.queryTerm,this.state.startYear, this.state.endYear).then(function(data){
     var articulo = data.map(function(art,i) {
       return <div className="well" key={i}>
-        <h3>{art.headline.main}</h3>
+        <h4 className="articleHeadline"><span className="label label-primary">{i+1}</span> {art.headline.main}</h4>
         <h5>{art.pub_date}</h5>
          <h5>{art.section_name}</h5>
-        <h5>{art.web_url}</h5>  
+         <p>{art.snippet}</p>
+        <a href={art.web_url}>{art.web_url}</a>  
       </div>;
     })
     console.log(articulo);
@@ -36,12 +37,6 @@ componentDidUpdate: function() {
 },
   setTerm: function(term) {
     this.setState({queryTerm: term});
-  },
-  setStartYear: function(startYear) {
-    this.setState({startYear: startYear});
-  },
-  setEndYear: function(endYear) {
-    this.setState({endYear: endYear});
   },
   
   // Here we describe this component's render method
@@ -69,7 +64,7 @@ componentDidUpdate: function() {
  <div className="row">
           <div className="col-md-12">
 
-            {/*<Saved clicks={this.state.clicks} />*/}
+            <Saved />
 
           </div>
 

@@ -11,7 +11,9 @@ var Search = React.createClass({
 
   handleChange: function(event) {
 
-    this.setState({term: event.target.value});
+    var newState = {};
+    newState[event.target.id] = event.target.value;
+    this.setState(newState);
    
   },
 
@@ -31,11 +33,11 @@ var Search = React.createClass({
         <div className="row">
           
           <div className="col-md-12">
-            <div className="panel panel-info">
+            <div className="panel panel-primary">
               <div className="panel-heading">
                 <h3 className="panel-title text-center">Search</h3>
               </div>
-              <div className="panel-body text-center">
+              <div className="panel-body">
                 <form onSubmit={this.handleSubmit}>
                   <div className="form-group">
                     <h4 className="">
@@ -62,7 +64,7 @@ var Search = React.createClass({
                       value={this.state.startYear}
                       className="form-control"
                       id="startYear"
-                   
+                     onChange={this.handleChange}
                       required
                     />
 
@@ -74,9 +76,10 @@ var Search = React.createClass({
                       value={this.state.endYear}
                       className="form-control"
                       id="endYear"
-                  
+                   onChange={this.handleChange}
                       required
                     />
+                    <br></br>
                      <button className="btn btn-primary btn-lg" type="submit">Search</button>
                   </div>
                 </form>
@@ -86,11 +89,11 @@ var Search = React.createClass({
           </div>
           <div className="row">
           <div className="col-md-12">
-            <div className="panel panel-info">
+            <div className="panel panel-primary">
               <div className="panel-heading">
                 <h3 className="panel-title text-center">Results</h3>
               </div>
-              <div className="panel-body text-center">
+              <div className="panel-body">
                 <div>{this.props.results}</div>
               </div>
             </div>
