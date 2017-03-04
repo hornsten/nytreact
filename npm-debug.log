@@ -10,7 +10,7 @@
 6 silly lifecycle nytreact@1.0.0~predev: no script for predev, continuing
 7 info lifecycle nytreact@1.0.0~dev: nytreact@1.0.0
 8 verbose lifecycle nytreact@1.0.0~dev: unsafe-perm in lifecycle true
-9 verbose lifecycle nytreact@1.0.0~dev: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/jessicahornsten/Desktop/nytreact/node_modules/.bin:/usr/local/Cellar/node/6.5.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+9 verbose lifecycle nytreact@1.0.0~dev: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/jessicahornsten/Desktop/nytreact/node_modules/.bin:/usr/local/Cellar/node/6.5.0/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 10 verbose lifecycle nytreact@1.0.0~dev: CWD: /Users/jessicahornsten/Desktop/nytreact
 11 silly lifecycle nytreact@1.0.0~dev: Args: [ '-c', 'webpack -w & node server' ]
 12 silly lifecycle nytreact@1.0.0~dev: Returned: code: 1  signal: null

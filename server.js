@@ -28,11 +28,6 @@ app.use(bodyParser.json({type: "application/vnd.api+json"}));
 
 app.use(express.static("./public"));
 
-//Main '/' Route. This will redirect to our rendered React applicaiton
-app.get("*", function(req, res) {
-    res.sendFile(__dirname + "/public/index.html");
-});
-
 app.get("/api/saved", function(req, res) {
 console.log('hittin the get route!!');
   // We will find all the records, sort it in descending order, then limit the records to 5
@@ -41,9 +36,7 @@ console.log('hittin the get route!!');
     if (err) {
       console.log(err);
     }
-    else {
       res.json(articles);
-    }
   });
 });
 
@@ -68,6 +61,11 @@ app.post("/api", function(req, res) {
         }
     });
 
+});
+
+//Main '/' Route. This will redirect to our rendered React applicaiton
+app.get("*", function(req, res) {
+    res.sendFile(__dirname + "/public/index.html");
 });
 
 app.listen(PORT, function() {

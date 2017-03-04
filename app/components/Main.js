@@ -21,11 +21,34 @@ var Main = React.createClass({
      articles: []
     };
   },
-componentDidUpdate: function() {
 
- helpers.getArticles().then(function(data) {
-      console.log(data);
-   
+   componentDidMount: function() {
+    // Get the latest history.
+    helpers.getArticles().then(function(response) {
+
+      console.log(response);
+      if (response !== this.state.articles) {
+        var articulo = response.map(function(arts,i) {
+
+     return <div className="well" key={i}>
+        <h4 className="articleHeadline"><span className="label label-primary">{i+1}</span> {arts.title}</h4>
+        <h5>{arts.date}</h5>
+        <a href={arts.url}>{arts.url}</a>  
+        {/*<form method="POST" action="/api">
+            <input type="hidden" name="title" value={art.headline.main}/>
+            <input type="hidden" name="url" value={art.web_url}/>
+            <br></br>
+            <button className="btn btn-info" data-loading-text="<i className='fa fa-spinner fa-spin'></i>Saving" type="submit">Save</button>
+          </form>*/}
+      </div>;
+    })
+        console.log("Articles", response.data);
+        this.setState({ articles: articulo });
+      }
+    }.bind(this));
+  },
+
+componentDidUpdate: function() {
 
   helpers.runQuery(this.state.queryTerm,this.state.startYear, this.state.endYear).then(function(data){
     var articulo = data.map(function(art,i) {
@@ -52,7 +75,7 @@ var artUrl = art.web_url;
   console.log(articulo);
 
    }.bind(this));
-    }.bind(this));
+   
 },
   setTerm: function(term) {
     this.setState({queryTerm: term});
@@ -81,7 +104,7 @@ var artUrl = art.web_url;
           <div className="container">
                <div className="row">
           <div className="col-md-12">
-
+{/*{this.props.children}*/}
     <Search setTerm={this.setTerm} setStartYear={this.startYear} setEndYear={this.endYear} results={this.state.results} />
 
           </div>
