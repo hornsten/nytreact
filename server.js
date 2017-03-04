@@ -63,6 +63,19 @@ app.post("/api", function(req, res) {
 
 });
 
+
+// removes saved articles from db
+	app.delete('/api/saved/:id', function(req, res){
+		Article.remove({id: req.params.id},function(err, article) {
+			if (err) {
+				console.log(err);
+			} 
+			res.end();
+		})
+
+	})
+
+
 //Main '/' Route. This will redirect to our rendered React applicaiton
 app.get("*", function(req, res) {
     res.sendFile(__dirname + "/public/index.html");

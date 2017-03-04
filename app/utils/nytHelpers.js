@@ -37,8 +37,16 @@ var queryURL = queryURLBase + "&q=" + queryTerm;
   // This function posts new searches to our database.
   postArticle: function(artTitle,artUrl) {
     return axios.post("/api", { title: artTitle, url: artUrl });
-  }
+  },
+
+deleteArticle: function() {
+  return axios.delete("/api/one/:_id", {params: { _id: artsId }})
+
+}
 };
+
+
+
 
 // We export the API helper
 module.exports = nytHelpers;

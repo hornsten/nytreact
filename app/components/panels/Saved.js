@@ -48,11 +48,9 @@ var artUrl = art.web_url;
         <div className="panel-heading">
           <h3 className="panel-title text-center">Saved Articles</h3>
         </div>
-        <div className="panel-body text-center">
+        <div className="panel-body">
 
           <div>{this.props.articles}</div>
-          <div>No articles yet</div>
-
         </div>
       </div>
     );

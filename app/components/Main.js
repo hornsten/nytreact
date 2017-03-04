@@ -23,7 +23,7 @@ var Main = React.createClass({
   },
 
    componentDidMount: function() {
-    // Get the latest history.
+    // Get the saved articles
     helpers.getArticles().then(function(response) {
 
       console.log(response);
@@ -34,12 +34,12 @@ var Main = React.createClass({
         <h4 className="articleHeadline"><span className="label label-primary">{i+1}</span> {arts.title}</h4>
         <h5>{arts.date}</h5>
         <a href={arts.url}>{arts.url}</a>  
-        {/*<form method="POST" action="/api">
-            <input type="hidden" name="title" value={art.headline.main}/>
-            <input type="hidden" name="url" value={art.web_url}/>
+        <form method="POST" action="/api/one/{arts._id}">
+            {/*<input type="hidden" name="title" value={arts.title}/>*/}
+            <input type="hidden" name="_id" value={arts._id}/>
             <br></br>
-            <button className="btn btn-info" data-loading-text="<i className='fa fa-spinner fa-spin'></i>Saving" type="submit">Save</button>
-          </form>*/}
+            <button className="btn btn-info" data-loading-text="<i className='fa fa-spinner fa-spin'></i>Deleting" type="submit">Delete</button>
+          </form>
       </div>;
     })
         console.log("Articles", response.data);
@@ -77,6 +77,8 @@ var artUrl = art.web_url;
    }.bind(this));
    
 },
+
+
   setTerm: function(term) {
     this.setState({queryTerm: term});
   },
