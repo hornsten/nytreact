@@ -16,14 +16,9 @@ var Main = React.createClass({
   getInitialState: function() {
 
     return {
-     queryTerm: "",
-     startYear: 0,
-     endYear: 0,
-     articles: []
+     queryTerm: ""
     };
   },
-
-   
 
 componentDidUpdate: function() {
 
@@ -54,7 +49,6 @@ var artUrl = art.web_url;
    }.bind(this));
    
 },
-
 
   setTerm: function(term) {
     this.setState({queryTerm: term});
@@ -91,8 +85,7 @@ var artUrl = art.web_url;
  <div className="row">
           <div className="col-md-12">
 <SavedContainer />
-            <Saved articles={this.state.articles}/>
-
+           
           </div>
 
         </div>

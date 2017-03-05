@@ -6,7 +6,7 @@ var Search = React.createClass({
 
  // Here we set a generic state associated with the text being searched for
   getInitialState: function() {
-    return {term: "", startYear: 0, endYear: 0};
+    return {term: "", startYear: "", endYear: ""};
   },
 
   handleChange: function(event) {
@@ -17,25 +17,19 @@ var Search = React.createClass({
    
   },
   setTerm: function(term) {
-    this.setState({queryTerm: term, 
-      startYear:startYear,
-      endYear:endYear});
-  },
-  setStartYear: function(e) {
-    this.setState({startYear: e.target.value})
-  },
-  setEndYear: function(e) {
-    this.setState({endYear: e.target.value})
+    this.setState({queryTerm: term+"&begin_date=" + startYear + "0101" + "&end_date=" + endYear + "0101"});
   },
 
   handleSubmit: function(event) {
 
     event.preventDefault();
 
-    this.props.setTerm(this.state.term,this.state.startYear,this.state.endYear);
+    this.props.setTerm(this.state.term+"&begin_date=" + this.state.startYear + "0101" + "&end_date=" + this.state.endYear + "0101");
+
+    // queryTerm + "&begin_date=" + startYear + "0101" + "&end_date=" + endYear + "0101";
     // this.props.setStartYear(this.state.startYear);
     // this.props.setEndYear(this.state.endYear);
-    this.setState({term: "",startYear: 0, endYear: 0});
+        this.setState({term: "",startYear: "", endYear: ""});
   },
   // Here we descibe this component's render method
   render: function() {
@@ -54,11 +48,7 @@ var Search = React.createClass({
                     <h4 className="">
                       <strong>Term</strong>
                     </h4>
-                    {/*
-                      Note how each of the form elements has an id that matches the state.
-                      This is not necessary but it is convenient.
-                      Also note how each has an onChange event associated with our handleChange event.
-                    */}
+                    
                     <input
                       type="text"
                       value={this.state.term}
@@ -71,7 +61,7 @@ var Search = React.createClass({
                       <strong>Start Year</strong>
                     </h4>
                     <input
-                      type="number"
+                      type="text"
                       value={this.state.startYear}
                       className="form-control"
                       id="startYear"
@@ -83,7 +73,7 @@ var Search = React.createClass({
                       <strong>End Year</strong>
                     </h4>
                     <input
-                      type="number"
+                      type="text"
                       value={this.state.endYear}
                       className="form-control"
                       id="endYear"

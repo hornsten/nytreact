@@ -10,15 +10,14 @@ var authKey = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
 var nytHelpers = {
 
   // This function serves our purpose of running the query
-  runQuery: function(queryTerm,startYear,endYear) {
+  runQuery: function(queryTerm) {
 
-    console.log(queryTerm, startYear,endYear);
-
+    console.log(queryTerm);
+  
 var queryURLBase = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=";
 
     // Find articles
 var queryURL = queryURLBase + "&q=" + queryTerm;
-// + "&begin_date=" + startYear + "0101" + "&end_date=" + endYear + "0101";
     return axios.get(queryURL).then(function(response) {
      
       return response.data.response.docs;
