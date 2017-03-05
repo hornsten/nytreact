@@ -2,6 +2,7 @@
 var React = require("react");
 
 // Here we include all of the sub-components
+var SavedContainer = require("./containers/SavedContainer");
 var Saved = require("./panels/Saved");
 var Search = require("./panels/Search");
 
@@ -22,31 +23,7 @@ var Main = React.createClass({
     };
   },
 
-   componentDidMount: function() {
-    // Get the saved articles
-    helpers.getArticles().then(function(response) {
-
-      console.log(response);
-      if (response !== this.state.articles) {
-        var articulo = response.map(function(arts,i) {
-
-     return <div className="well" key={i}>
-        <h4 className="articleHeadline"><span className="label label-primary">{i+1}</span> {arts.title}</h4>
-        <h5>{arts.date}</h5>
-        <a href={arts.url}>{arts.url}</a>  
-        <form method="POST" action="/api/one/{arts._id}">
-            {/*<input type="hidden" name="title" value={arts.title}/>*/}
-            <input type="hidden" name="_id" value={arts._id}/>
-            <br></br>
-            <button className="btn btn-info" data-loading-text="<i className='fa fa-spinner fa-spin'></i>Deleting" type="submit">Delete</button>
-          </form>
-      </div>;
-    })
-        console.log("Articles", response.data);
-        this.setState({ articles: articulo });
-      }
-    }.bind(this));
-  },
+   
 
 componentDidUpdate: function() {
 
@@ -113,7 +90,7 @@ var artUrl = art.web_url;
 </div>
  <div className="row">
           <div className="col-md-12">
-
+<SavedContainer />
             <Saved articles={this.state.articles}/>
 
           </div>
