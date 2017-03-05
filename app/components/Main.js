@@ -3,6 +3,7 @@ var React = require("react");
 
 // Here we include all of the sub-components
 var SavedContainer = require("./containers/SavedContainer");
+var SearchContainer = require("./containers/SearchContainer");
 var Saved = require("./panels/Saved");
 var Search = require("./panels/Search");
 
@@ -13,7 +14,7 @@ var helpers = require("../utils/nytHelpers");
 var Main = React.createClass({
 
   // Here we set a generic state associated with the number of clicks
-  getInitialState: function() {
+  /*getInitialState: function() {
 
     return {
      queryTerm: ""
@@ -52,13 +53,7 @@ var artUrl = art.web_url;
 
   setTerm: function(term) {
     this.setState({queryTerm: term});
-  },
-  // setStartYear: function(e) {
-  //   this.setState({startYear: e.target.value})
-  // },
-  // setEndYear: function(e) {
-  //   this.setState({endYear: e.target.value})
-  // },
+  },*/
   
   // Here we describe this component's render method
   render: function() {
@@ -78,8 +73,8 @@ var artUrl = art.web_url;
                <div className="row">
           <div className="col-md-12">
 {/*{this.props.children}*/}
-    <Search setTerm={this.setTerm} setStartYear={this.startYear} setEndYear={this.endYear} results={this.state.results} />
-
+    {/*<Search setTerm={this.setTerm} setStartYear={this.startYear} setEndYear={this.endYear} results={this.state.results} />*/}
+<SearchContainer />
           </div>
 </div>
  <div className="row">
