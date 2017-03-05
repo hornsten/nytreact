@@ -12,8 +12,8 @@ var Route = router.Route;
 var Router = router.Router;
 
 //Include the hashHistory prop to handle routing client side without a server
-var hashHistory = router.hashHistory;
-
+// var hashHistory = router.hashHistory;
+var browserHistory = router.browserHistory;
 //Include the IndexRoute (catch-all route)
 var IndexRoute = router.IndexRoute;
 
@@ -25,7 +25,7 @@ module.exports = (
 
     //the high level component is the Router component
 
-    <Router history = {hashHistory}>
+    <Router history = {browserHistory}>
         <Route path="/" component={Main}>
 
 <Route path="saved" component={SavedContainer} />
