@@ -29,8 +29,7 @@ app.use(bodyParser.json({type: "application/vnd.api+json"}));
 app.use(express.static("./public"));
 
 app.get("/api/saved", function(req, res) {
-console.log('hittin the get route!!');
-  // We will find all the records, sort it in descending order, then limit the records to 5
+
  var query = Article.find({});
    query.exec(function(err, articles) {
     if (err) {
@@ -57,7 +56,7 @@ app.post("/api", function(req, res) {
         else {
             //log results
         
-            res.send(art);
+           return art;
         }
     });
 

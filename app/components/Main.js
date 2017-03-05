@@ -1,11 +1,11 @@
 // Include React
 var React = require("react");
-
+var Link = require('react-router').Link;
 // Here we include all of the sub-components
 var SavedContainer = require("./containers/SavedContainer");
 var SearchContainer = require("./containers/SearchContainer");
-var Saved = require("./panels/Saved");
-var Search = require("./panels/Search");
+var Saved = require("./containers/panels/Saved");
+var Search = require("./containers/panels/Search");
 
 var helpers = require("../utils/nytHelpers");
 
@@ -33,8 +33,8 @@ var Main = React.createClass({
 
     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul className="nav navbar-nav">
-        <li><a href="#/search">Search <span className="sr-only">(current)</span></a></li>
-        <li><a href="#/saved">Saved</a></li>
+        <li><Link to="/search">Search <span className="sr-only">(current)</span></Link></li>
+        <li><Link to="/saved">Saved</Link></li>
       </ul>
     </div>
   </div>
@@ -49,6 +49,7 @@ var Main = React.createClass({
                     <div className="row">
                         <div className="col-md-12">   
                             {this.props.children}
+                          
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 var React = require("react");
 var helpers = require("../../utils/nytHelpers");
-var Search = require("../panels/Search");
+var Search = require("./panels/Search");
 
 const SearchContainer = React.createClass({
 
@@ -35,7 +35,14 @@ var artUrl = art.web_url;
     })
 
     this.setState({results: articulo});
-  console.log(articulo);
+
+        helpers.getArticles().then(function(response) {
+            console.log("Current Articles", response.data);
+
+            this.setState({ articles: response.data });
+
+          }.bind(this));
+
 
    }.bind(this));
    

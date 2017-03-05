@@ -1,7 +1,7 @@
 // Include React
 var React = require("react");
 var helpers = require("../../utils/nytHelpers");
-var Saved = require("../panels/Saved");
+var Saved = require("./panels/Saved");
 
 const SavedContainer = React.createClass({
 
