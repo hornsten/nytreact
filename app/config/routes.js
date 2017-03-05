@@ -18,8 +18,8 @@ var hashHistory = router.hashHistory;
 var IndexRoute = router.IndexRoute;
 
 var Main = require('../components/Main');
-var Saved = require('../components/panels/Saved');
-var Search = require('../components/panels/Search');
+var SavedContainer = require('../components/containers/SavedContainer');
+var SearchContainer = require('../components/containers/SearchContainer');
 
 module.exports = (
 
@@ -28,10 +28,10 @@ module.exports = (
     <Router history = {hashHistory}>
         <Route path="/" component={Main}>
 
-<Route path="saved" component={Saved} />
-<Route path="search" component={Search} />
+<Route path="saved" component={SavedContainer} />
+<Route path="search" component={SearchContainer} />
 
-<IndexRoute component={Search} />
+<IndexRoute component={SearchContainer} />
 
 </Route>
 </Router>

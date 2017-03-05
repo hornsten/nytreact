@@ -18,15 +18,15 @@ const SavedContainer = React.createClass({
 
                     return <div className="well" key={i}>
                         <h4 className="articleHeadline">
-                            <span className="label label-primary">{i + 1}</span>
-                            {arts.title}</h4>
+                            <span className="label label-success">{i + 1}</span>
+                             {arts.title}</h4>
                         <h5>{arts.date}</h5>
                         <a href={arts.url}>{arts.url}</a>
                         <form method="POST" action="/api/one/{arts._id}">
                             {/*<input type="hidden" name="title" value={arts.title}/>*/}
                             <input type="hidden" name="_id" value={arts._id}/>
                             <br></br>
-                            <button className="btn btn-info" data-loading-text="<i className='fa fa-spinner fa-spin'></i>Deleting" type="submit">Delete</button>
+                            <button className="btn btn-success" data-loading-text="<i className='fa fa-spinner fa-spin'></i>Deleting" type="submit">Delete</button>
                         </form>
                     </div>;
                 })
@@ -49,7 +49,7 @@ const SavedContainer = React.createClass({
                 <div className="row">
 
                     <div className="col-md-12">
-                        <div className="panel panel-primary">
+                        <div className="panel panel-success">
                             <div className="panel-heading">
                                 <h3 className="panel-title text-center">Saved Articles</h3>
                             </div>

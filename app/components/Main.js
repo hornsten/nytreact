@@ -17,6 +17,28 @@ var Main = React.createClass({
     render: function() {
         return (
             <div className="wrapper">
+           <div className="navbar navbar-success">
+  <div className="container-fluid">
+    
+    <div className="navbar-header">
+      <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span className="sr-only">Toggle navigation</span>
+        <span className="icon-bar"></span>
+        <span className="icon-bar"></span>
+        <span className="icon-bar"></span>
+      </button>
+      <a className="navbar-brand" href="#">NYT</a>
+    </div>
+
+
+    <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul className="nav navbar-nav">
+        <li><a href="#/search">Search <span className="sr-only">(current)</span></a></li>
+        <li><a href="#/saved">Saved</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
                 <div className="jumbotron text-center">
                     <div className="container">
                         <h1>New York Times Article Scrubber</h1>
@@ -25,13 +47,8 @@ var Main = React.createClass({
                 </div>
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-12">
-                            <SearchContainer/>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-12">
-                            <SavedContainer/>
+                        <div className="col-md-12">   
+                            {this.props.children}
                         </div>
                     </div>
                 </div>
