@@ -1,22 +1,20 @@
 // Include the axios package for performing HTTP requests (promise based alternative to request)
 var axios = require("axios");
 
-// This variable will be pre-programmed with our authentication key (the one we received when we registered)
+// API key for New York Times
 var authKey = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
-
-// Based on the queryTerm we will create a queryURL 
 
 // Helper functions for making API Calls
 var nytHelpers = {
 
-  // This function serves our purpose of running the query
+  // This function runs the query
   runQuery: function(queryTerm) {
 
     console.log(queryTerm);
   
 var queryURLBase = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=";
 
-    // Find articles
+    // Find articles based on the query
 var queryURL = queryURLBase + "&q=" + queryTerm;
     return axios.get(queryURL).then(function(response) {
      
@@ -24,7 +22,7 @@ var queryURL = queryURLBase + "&q=" + queryTerm;
     });
   },
 
-  // This function hits our own server to retrieve the record of query results
+  // Retrieve saved articles from the db
   getArticles: function() {
     return axios.get("/api/saved").then(function(response) {
 
@@ -33,19 +31,35 @@ var queryURL = queryURLBase + "&q=" + queryTerm;
     
   },
 
-  // This function posts new searches to our database.
+  // Save a new article to the db
   postArticle: function(artTitle,artUrl) {
     return axios.post("/api", { title: artTitle, url: artUrl });
   },
 
-deleteArticle: function() {
-  return axios.delete("/api/one/:_id", {params: { _id: artsId }})
+// //Delete a saved article from the db
+// deleteArticle: function(articleId) {
+//   return axios.delete("/api/saved/"+articleId);
 
-}
+// }
+
+deleteArticle: function(articleId) {
+  console.log('helpers say delete this: ',articleId);
+        $.ajax({
+            url: '/api/saved/'+articleId,
+            type: 'DELETE',
+            success: function(result) {
+              
+                // Do something with the result
+                return console.log('helpers sent this: ',result);
+            }
+        });
+    
+    }
+
 };
 
 
 
 
-// We export the API helper
+// Export nytHelpers
 module.exports = nytHelpers;

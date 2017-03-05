@@ -7,14 +7,9 @@ var SearchContainer = require("./containers/SearchContainer");
 var Saved = require("./containers/panels/Saved");
 var Search = require("./containers/panels/Search");
 
-var helpers = require("../utils/nytHelpers");
-
-// This is the main component. It includes the banner and button.
-// Whenever you click the button it will communicate the click event to all other sub components.
-var Main = React.createClass({
-
-    // Here we describe this component's render method
-    render: function() {
+//This is a "stateless functional component"
+var Main = function(props) {
+  
         return (
             <div className="wrapper">
            <div className="navbar navbar-success">
@@ -48,15 +43,15 @@ var Main = React.createClass({
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">   
-                            {this.props.children}
+                            {props.children}
                           
                         </div>
                     </div>
                 </div>
             </div>
         );
-    }
-});
+    
+};
 
 // Export the component back for use in other files
 module.exports = Main;

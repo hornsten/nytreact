@@ -64,11 +64,14 @@ app.post("/api", function(req, res) {
 
 
 // removes saved articles from db
-	app.delete('/api/saved/:id', function(req, res){
-		Article.remove({id: req.params.id},function(err, article) {
+app.delete('/api/saved/:id', function(req, res){
+ console.log('delete route in server got this: ',req.params.id);
+		Article.findOneAndRemove({"_id": req.params.id},function(err, article) {
+          
 			if (err) {
 				console.log(err);
 			} 
+             
 			res.end();
 		})
 

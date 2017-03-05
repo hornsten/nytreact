@@ -8,26 +8,28 @@ const SavedContainer = React.createClass({
     getInitialState: function() {
         return {articles: []}
     },
-
+    
     componentDidMount: function() {
         // Get the saved articles
         helpers.getArticles().then(function(response) {
-
+var component = this;
             if (response !== this.state.articles) {
+               
                 var articulo = response.map(function(arts, i) {
-
+                
                     return <div className="well" key={i}>
                         <h4 className="articleHeadline">
                             <span className="label label-success">{i + 1}</span>
                              {arts.title}</h4>
                         <h5>{arts.date}</h5>
                         <a href={arts.url}>{arts.url}</a>
-                        <form method="POST" action="/api/one/{arts._id}">
+                        {/*<form method="POST">*/}
                             {/*<input type="hidden" name="title" value={arts.title}/>*/}
-                            <input type="hidden" name="_id" value={arts._id}/>
+                            <input type="hidden" name="articleId" value={arts._id}/>
                             <br></br>
-                            <button className="btn btn-success" data-loading-text="<i className='fa fa-spinner fa-spin'></i>Deleting" type="submit">Delete</button>
-                        </form>
+                            {/*<button className="btn btn-success" data-loading-text="<i className='fa fa-spinner fa-spin'></i>Deleting" type="submit">Delete</button>*/}
+<button onClick={() => component.removeArticleClick(arts._id)} className="btn btn-default text-center btn-primary">Delete</button>
+                        {/*</form>*/}
                     </div>;
                 })
                 console.log("Articles", response);
@@ -35,12 +37,17 @@ const SavedContainer = React.createClass({
             }
         }.bind(this));
     },
+    
+    removeArticleClick: function(response){
+        helpers.deleteArticle(response)
+        console.log(response);
+        // update state of parent
+        helpers.getArticles().then((response) => {
+            // update state of parent
 
-    deleteArticle: function(artId) {
-        helpers.deleteArticle(artId).then(() => {
-            const newArticles = _.filter(this.state.articles, article => article.id != artId);
-            this.setState({articles: newArticles})
-        });
+          
+        })
+
     },
 
     render: function() {
