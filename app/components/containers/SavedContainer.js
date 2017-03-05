@@ -23,16 +23,13 @@ var component = this;
                              {arts.title}</h4>
                         <h5>{arts.date}</h5>
                         <a href={arts.url}>{arts.url}</a>
-                        {/*<form method="POST">*/}
-                            {/*<input type="hidden" name="title" value={arts.title}/>*/}
+                       
                             <input type="hidden" name="articleId" value={arts._id}/>
                             <br></br>
-                            {/*<button className="btn btn-success" data-loading-text="<i className='fa fa-spinner fa-spin'></i>Deleting" type="submit">Delete</button>*/}
-<button onClick={() => component.removeArticleClick(arts._id)} className="btn btn-default text-center btn-primary">Delete</button>
-                        {/*</form>*/}
+                    <button onClick={() => component.removeArticleClick(arts._id)} className="btn btn-default text-center btn-primary">Delete</button>
                     </div>;
                 })
-                console.log("Articles", response);
+         
                 this.setState({articles: articulo});
             }
         }.bind(this));

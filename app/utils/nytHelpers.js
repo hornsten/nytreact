@@ -36,25 +36,12 @@ var queryURL = queryURLBase + "&q=" + queryTerm;
     return axios.post("/api", { title: artTitle, url: artUrl });
   },
 
-// //Delete a saved article from the db
-// deleteArticle: function(articleId) {
-//   return axios.delete("/api/saved/"+articleId);
-
-// }
-
+//Delete a saved article from the db
 deleteArticle: function(articleId) {
-  console.log('helpers say delete this: ',articleId);
-        $.ajax({
-            url: '/api/saved/'+articleId,
-            type: 'DELETE',
-            success: function(result) {
-              
-                // Do something with the result
-                return console.log('helpers sent this: ',result);
-            }
-        });
-    
-    }
+  console.log('axios delete in the house!');
+  return axios.delete("/api/saved/"+articleId);
+
+}
 
 };
 
