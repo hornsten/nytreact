@@ -36,14 +36,6 @@ var artUrl = art.web_url;
 
     this.setState({results: articulo});
 
-        helpers.getArticles().then(function(response) {
-            console.log("Current Articles", response.data);
-
-            this.setState({ articles: response.data });
-
-          }.bind(this));
-
-
    }.bind(this));
    
 },

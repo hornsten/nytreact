@@ -33,6 +33,7 @@ var queryURL = queryURLBase + "&q=" + queryTerm;
 
   // Save a new article to the db
   postArticle: function(artTitle,artUrl) {
+    console.log('hitting axios post');
     return axios.post("/api", { title: artTitle, url: artUrl });
   },
 

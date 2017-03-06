@@ -12,7 +12,7 @@ const SavedContainer = React.createClass({
     componentDidMount: function() {
         // Get the saved articles
         helpers.getArticles().then(function(response) {
-var component = this;
+    var component = this;
             if (response !== this.state.articles) {
                
                 var articulo = response.map(function(arts, i) {
@@ -39,11 +39,28 @@ var component = this;
         helpers.deleteArticle(response)
         console.log(response);
         // update state of parent
-        helpers.getArticles().then((response) => {
-            // update state of parent
-
-          
-        })
+        helpers.getArticles().then(function(response) {
+    var component = this;
+            if (response !== this.state.articles) {
+               
+                var articulos = response.map(function(arts, i) {
+                
+                    return <div className="well" key={i}>
+                        <h4 className="articleHeadline">
+                            <span className="label label-success">{i + 1}</span>
+                             {arts.title}</h4>
+                        <h5>{arts.date}</h5>
+                        <a href={arts.url}>{arts.url}</a>
+                       
+                            <input type="hidden" name="articleId" value={arts._id}/>
+                            <br></br>
+                    <button onClick={() => component.removeArticleClick(arts._id)} className="btn btn-default text-center btn-primary">Delete</button>
+                    </div>;
+                })
+         
+                this.setState({articles: articulos});
+            }
+        }.bind(this));
 
     },
 
