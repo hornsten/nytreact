@@ -6,7 +6,7 @@ var articleSchema = new Schema({
     title: { type: String, unique: true },
     date: {type: Date, default: Date.now},
     url: { type: String, unique: true }
-    
+
 });
 
 var Article = mongoose.model('Article', articleSchema);

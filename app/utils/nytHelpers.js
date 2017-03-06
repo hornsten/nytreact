@@ -11,13 +11,13 @@ var nytHelpers = {
   runQuery: function(queryTerm) {
 
     console.log(queryTerm);
-  
+
 var queryURLBase = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=";
 
     // Find articles based on the query
 var queryURL = queryURLBase + "&q=" + queryTerm;
     return axios.get(queryURL).then(function(response) {
-     
+
       return response.data.response.docs;
     });
   },
@@ -28,7 +28,7 @@ var queryURL = queryURLBase + "&q=" + queryTerm;
 
             return response.data;
         })
-    
+
   },
 
   // Save a new article to the db

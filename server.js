@@ -40,10 +40,10 @@ app.get("/api/saved", function(req, res) {
 });
 
 app.post("/api", function(req, res) {
-  
+
  var art = new Article({
         title: req.body.title,
-        url: req.body.url      
+        url: req.body.url
     });
 
     art.save(function(err, art) {
@@ -66,11 +66,11 @@ app.post("/api", function(req, res) {
 app.delete('/api/saved/:id', function(req, res){
  console.log('delete route in server got this: ',req.params.id);
 		Article.findOneAndRemove({"_id": req.params.id},function(err, article) {
-          
+
 			if (err) {
 				console.log(err);
-			} 
-             
+			}
+
 			res.end();
 		})
 

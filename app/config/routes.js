@@ -23,18 +23,16 @@ var SearchContainer = require('../components/containers/SearchContainer');
 
 module.exports = (
 
-    //the high level component is the Router component
+//the high level component is the Router component < Router history = {
+    browserHistory
+} > <Route path="/" component={Main}>
 
-    <Router history = {browserHistory}>
-        <Route path="/" component={Main}>
+    <Route path="saved" component={SavedContainer}/>
+    <Route path="search" component={SearchContainer}/>
 
-<Route path="saved" component={SavedContainer} />
-<Route path="search" component={SearchContainer} />
+    <IndexRoute component={SearchContainer}/>
 
-<IndexRoute component={SearchContainer} />
-
-</Route>
-</Router>
+</Route> < /Router>
 
 
 );
