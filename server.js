@@ -8,8 +8,8 @@ var Article = require('./models/Article');
 // Use native promises
 mongoose.Promise = global.Promise;
 
-// var uri = "mongodb://heroku_93x5m90j:oie6nsilvllanl3mff0nr3v1a0@ds157349.mlab.com:57349/heroku_93x5m90j" || "mongodb://localhost/nytreact";
-var uri = "mongodb://localhost/nytreact";
+ var uri = "mongodb://heroku_jqs5gpln:ilv7ukf3750aug31nvg60ktnmn@ds119380.mlab.com:19380/heroku_jqs5gpln" || "mongodb://localhost/nytreact";
+
 mongoose.connect(uri);
 
 var db = mongoose.connection;
