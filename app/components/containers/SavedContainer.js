@@ -43,7 +43,7 @@ const SavedContainer = React.createClass({
     var component = this;
             if (response !== this.state.articles) {
                
-                var articulos = response.map(function(arts, i) {
+                var articulo = response.map(function(arts, i) {
                 
                     return <div className="well" key={i}>
                         <h4 className="articleHeadline">
@@ -58,7 +58,7 @@ const SavedContainer = React.createClass({
                     </div>;
                 })
          
-                this.setState({articles: articulos});
+                this.setState({articles: articulo});
             }
         }.bind(this));
 

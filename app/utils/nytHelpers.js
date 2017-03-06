@@ -32,9 +32,9 @@ var queryURL = queryURLBase + "&q=" + queryTerm;
   },
 
   // Save a new article to the db
-  postArticle: function(artTitle,artUrl) {
+  postArticle: function(artObject) {
     console.log('hitting axios post');
-    return axios.post("/api", { title: artTitle, url: artUrl });
+    return axios.post("/api", { title: artObject.headline.main, url: artObject.web_url });
   },
 
 //Delete a saved article from the db

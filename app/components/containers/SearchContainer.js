@@ -10,10 +10,41 @@ const SearchContainer = React.createClass({
      queryTerm: ""
     };
   },
+   saveArticle: function(response){
+ 
+        helpers.postArticle(response)
+     
+        // update state of parent
+        helpers.getArticles().then(function(response) {
+    var component = this;
+            if (response !== this.state.articles) {
+               
+                var articulo = response.map(function(arts, i) {
+                
+                    return <div className="well" key={i}>
+                        <h4 className="articleHeadline">
+                            <span className="label label-success">{i + 1}</span>
+                             {arts.title}</h4>
+                        <h5>{arts.date}</h5>
+                        <a href={arts.url}>{arts.url}</a>
+                       
+                            <input type="hidden" name="articleId" value={arts._id}/>
+                            <br></br>
+                    <button onClick={() => component.removeArticleClick(arts._id)} className="btn btn-success">Delete</button>
+                    </div>;
+                })
+         
+                this.setState({articles: articulo});
+                alert('article saved!');
+            }
+        }.bind(this));
+
+    },
 
 componentDidUpdate: function() {
 
   helpers.runQuery(this.state.queryTerm,this.state.startYear, this.state.endYear).then(function(data){
+    var component = this;
     var articulo = data.map(function(art,i) {
 
 var artTitle = art.headline.main;
@@ -29,7 +60,8 @@ var artUrl = art.web_url;
             <input type="hidden" name="title" value={art.headline.main}/>
             <input type="hidden" name="url" value={art.web_url}/>
             <br></br>
-            <button className="btn btn-info" data-loading-text="<i className='fa fa-spinner fa-spin'></i>Saving" type="submit">Save</button>
+          <button onClick={() => component.saveArticle(art)} className="btn btn-primary">Save</button>
+
           </form>
       </div>;
     })

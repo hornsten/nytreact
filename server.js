@@ -55,8 +55,7 @@ app.post("/api", function(req, res) {
         // Otherwise,
         else {
             //log results
-        
-           return art;
+      res.end();
         }
     });
 
