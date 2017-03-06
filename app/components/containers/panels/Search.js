@@ -59,7 +59,7 @@ var Search = React.createClass({
                                         </h4>
                                         <input type="text" value={this.state.endYear} className="form-control" id="endYear" onChange={this.handleChange} required/>
                                         <br></br>
-                                        <button className="btn btn-primary btn-lg" type="submit">Search</button>
+                                        <button className="btn btn-primary btn-lg" id="load" data-loading-text="<i className='fa fa-circle-o-notch fa-spin'></i> Processing Order">Search</button>
                                     </div>
                                 </form>
                             </div>

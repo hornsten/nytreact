@@ -12,7 +12,7 @@ var Main = function(props) {
   
         return (
             <div className="wrapper">
-           <div className="navbar navbar-success">
+           <div className="navbar navbar-success" style={{marginBottom: 0+'em'}}>
   <div className="container-fluid">
     
     <div className="navbar-header">
