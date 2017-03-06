@@ -6,6 +6,7 @@ var SavedContainer = require("./containers/SavedContainer");
 var SearchContainer = require("./containers/SearchContainer");
 var Saved = require("./containers/panels/Saved");
 var Search = require("./containers/panels/Search");
+var styles = require('../styles');
 
 //This is a stateless functional component
 var Main = function(props) {
@@ -34,10 +35,10 @@ var Main = function(props) {
     </div>
   </div>
 </div>
-                <div className="jumbotron text-center">
+                <div className="jumbotron text-center" style={styles.transparentBg}>
                     <div className="container">
-                        <h1>New York Times Article Scrubber</h1>
-                        <p>Search for and annotate articles of interest</p>
+                        <h1>MERN Stack Article Finder</h1>
+                        <p>Search for and save articles from the New York Times</p>
                     </div>
                 </div>
                 <div className="container">
