@@ -2,7 +2,7 @@
 A MongoDB/Express/ReactJS/Node Article Finder
 
 
-##This is a simple Single Page Application that uses the MERN stack to search for, save, and delete articles.
+This is a simple Single Page Application that uses the MERN stack to search for, save, and delete articles.
 
 ![home page](public/img/homepage.png?raw=true "Home View")
 
