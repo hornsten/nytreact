@@ -1,2 +1,4 @@
 # nytreact
-A Node/Express/Handlebars/MongoDB/ReactJS Article Finder
+A MongoDB/Express/ReactJS/Node Article Finder
+
+![home page](public/img/homepage.png?raw=true "Home Page")
