@@ -38,7 +38,7 @@ var queryURL = queryURLBase + "&q=" + queryTerm;
 
 //Delete a saved article from the db
 deleteArticle: function(articleId) {
-  console.log('axios delete in the house!');
+
   return axios.delete("/api/saved/"+articleId);
 
 }

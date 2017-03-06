@@ -1,7 +1,7 @@
 // Include React
 var React = require("react");
 
-// Create the Imgr Component
+// Create the Search Component
 var Search = React.createClass({
 
     // Here we set a generic state associated with the text being searched for

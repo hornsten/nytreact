@@ -7,7 +7,7 @@ var SearchContainer = require("./containers/SearchContainer");
 var Saved = require("./containers/panels/Saved");
 var Search = require("./containers/panels/Search");
 
-//This is a "stateless functional component"
+//This is a stateless functional component
 var Main = function(props) {
   
         return (
