@@ -2,7 +2,7 @@
 var axios = require("axios");
 
 // API key for New York Times
-var authKey = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
+var authKey = "d87717014d8a4367907ce9e0f95a2308";
 
 // Helper functions for making API Calls
 var nytHelpers = {
